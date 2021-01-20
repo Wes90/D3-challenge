@@ -25,7 +25,7 @@ var chartGroup = svg.append("g")
   .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
 // Initial Params
-var chosenXAxis = "";
+var chosenXAxis = "poverty";
 
 // function used for updating x-scale var upon click on axis label
 function xScale(census_data, chosenXAxis) {
@@ -71,14 +71,14 @@ function updateToolTip(chosenXAxis, circlesGroup) {
     label = "In Poverty(%)";
   }
   else {
-    label = "# of Albums:";
+    label = "Age(Median)";
   }
 
   var toolTip = d3.tip()
     .attr("class", "tooltip")
     .offset([80, -60])
     .html(function(d) {
-      return (`${d.rockband}<br>${label} ${d[chosenXAxis]}`);
+      return (`${d.}<br>${label} ${d[chosenXAxis]}`);
     });
 
   circlesGroup.call(toolTip);
