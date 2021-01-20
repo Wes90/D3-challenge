@@ -28,11 +28,11 @@ var chartGroup = svg.append("g")
 var chosenXAxis = "";
 
 // function used for updating x-scale var upon click on axis label
-function xScale(data, chosenXAxis) {
+function xScale(census_data, chosenXAxis) {
   // create scales
   var xLinearScale = d3.scaleLinear()
     .domain([d3.min(data, d => d[chosenXAxis]) * 0.8,
-      d3.max(hairData, d => d[chosenXAxis]) * 1.2
+      d3.max(census_data, d => d[chosenXAxis]) * 1.2
     ])
     .range([0, width]);
 
@@ -67,8 +67,8 @@ function updateToolTip(chosenXAxis, circlesGroup) {
 
   var label;
 
-  if (chosenXAxis === "hair_length") {
-    label = "Hair Length:";
+  if (chosenXAxis === "poverty") {
+    label = "In Poverty(%)";
   }
   else {
     label = "# of Albums:";
@@ -94,7 +94,7 @@ function updateToolTip(chosenXAxis, circlesGroup) {
   return circlesGroup;
 }
 
-d3.csv("assets/data/data.csv").then(function(data){
-    console.log(data);
+d3.csv("assets/data/data.csv").then(function(census_data){
+    console.log(census_data);
 
 });
